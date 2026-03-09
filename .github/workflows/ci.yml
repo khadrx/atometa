@@ -39,7 +39,7 @@ jobs:
           - name: macOS (Clang arm64)
             os: macos-14
             preset: macos-clang
-            triplet: arm64-osx
+            triplet: arm64-osx-dynamic
             artifact_name: atometa-macos-arm64
 
     steps:
@@ -80,6 +80,9 @@ jobs:
           runVcpkgInstall: true
         env:
           VCPKG_DEFAULT_TRIPLET: ${{ matrix.triplet }}
+          VCPKG_MAX_CONCURRENCY: "2"
+          # macOS arm64: required to use system tools instead of downloading binaries
+          VCPKG_FORCE_SYSTEM_BINARIES: ${{ runner.os == 'macOS' && '1' || '' }}
 
       # 6 — Configure (Debug on PR/push, Release on tag)
       - name: Configure

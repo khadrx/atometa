@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Atometa/Core/Core.h"
-#include <cstdint>
+#include <cstdint>    // uint32_t
 #include <string>
 #include <functional>
 
@@ -33,12 +33,15 @@ namespace Atometa {
         void OnUpdate();
         bool ShouldClose() const;
 
-        uint32_t GetWidth()      const { return m_Data.Width; }
-        uint32_t GetHeight()     const { return m_Data.Height; }
-        float    GetAspectRatio()const { return (float)m_Data.Width / (float)m_Data.Height; }
-        bool     IsVSync()       const { return m_Data.VSync; }
+        uint32_t GetWidth()       const { return m_Data.Width; }
+        uint32_t GetHeight()      const { return m_Data.Height; }
+        float    GetAspectRatio() const { return (float)m_Data.Width / (float)m_Data.Height; }
+        bool     IsVSync()        const { return m_Data.VSync; }
 
         void SetVSync(bool enabled);
+
+        // Declared here so Window.cpp definition matches
+        void SetWindowIcon(const std::string& iconPath);
 
         GLFWwindow* GetNativeWindow() const { return m_Window; }
 
