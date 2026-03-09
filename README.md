@@ -90,7 +90,7 @@ Atometa/
 
 ```cmd
 # 1 — Clone
-git clone https://github.com/YOUR_USERNAME/atometa.git
+git clone https://github.com/khadrx/atometa.git
 cd atometa
 
 # 2 — Install dependencies via vcpkg
