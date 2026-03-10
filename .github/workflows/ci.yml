@@ -46,6 +46,10 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install ninja pkg-config
 
+      - name: Install Ninja (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ninja
+
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
